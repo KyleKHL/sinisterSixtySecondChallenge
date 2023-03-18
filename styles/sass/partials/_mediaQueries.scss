@@ -2,3 +2,21 @@
     // variables
 @use 'variables' as *;
 
+@media (max-width: 700px) {
+    .landingPage .wrapper h1 {
+        font-size: 3rem;
+    }
+    .introTextContainer p {
+        font-size: 1rem;
+    }
+    p.invitationText {
+        font-size: 1.3rem;
+    }
+    form {
+        width: 100%;
+    }
+    // footer text
+    footer .wrapper p {
+        font-size: 1rem;
+    }
+}

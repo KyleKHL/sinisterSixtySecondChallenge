@@ -513,6 +513,13 @@ footer .wrapper {
       -ms-flex-pack: center;
           justify-content: center;
 }
+footer .wrapper p {
+  text-align: center;
+}
+footer .wrapper p .copyrightIcon {
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
 footer .wrapper a {
   color: black;
   text-decoration: underline;
@@ -522,4 +529,22 @@ footer .wrapper a:focus {
   color: brown;
   -webkit-transition: 200ms;
   transition: 200ms;
+}
+
+@media (max-width: 700px) {
+  .landingPage .wrapper h1 {
+    font-size: 3rem;
+  }
+  .introTextContainer p {
+    font-size: 1rem;
+  }
+  p.invitationText {
+    font-size: 1.3rem;
+  }
+  form {
+    width: 100%;
+  }
+  footer .wrapper p {
+    font-size: 1rem;
+  }
 }

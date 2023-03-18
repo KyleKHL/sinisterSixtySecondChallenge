@@ -195,9 +195,13 @@ const randomQuestionFunction = () => {
     // use get method to retrieve data from db
     get(questionArrayPath).then((data) => {
         const questionArrayData = data.val();
+
+        const newCopiedArray = [...questionArrayData];
+        
+
         // select question in array randomly
-        const getRandomQuestion = Math.floor(Math.random() * questionArrayData.length);
-        chosenQuestion = questionArrayData[getRandomQuestion];
+        const getRandomQuestion = Math.floor(Math.random() * newCopiedArray.length);
+        chosenQuestion = newCopiedArray[getRandomQuestion];
         // append the question to h2
         playingPageQuestion.textContent = chosenQuestion.question;
         // making the text content equal to each of the answers
@@ -208,10 +212,10 @@ const randomQuestionFunction = () => {
             const number = button.value;
             button.textContent = chosenQuestion.choices[number];
         })
-    
+        
     // use splice method in questionArrayData to stop questions from repeating
-        // questionArrayData.splice(getRandomQuestion, 1);
-
+        
+        // let removedQuestion = newCopiedArray.splice(getRandomQuestion, 1)
     })
 }
 

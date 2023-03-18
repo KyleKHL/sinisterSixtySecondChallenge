@@ -8,6 +8,13 @@ footer {
     .wrapper {
         display: flex;
         justify-content: center;
+        p {
+            text-align: center;
+            .copyrightIcon {
+                font-size: 1.6rem;
+                vertical-align: middle;
+            }
+        }
         a{
             color: $basicFontColor;
             text-decoration: underline;
