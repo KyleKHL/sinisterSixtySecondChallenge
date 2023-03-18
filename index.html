@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinister Sixty Second Challenge</title>
+    <!-- link to favicon -->
+    <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
     <!-- link to fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +26,10 @@
             <div class="wrapper">
                 <p>Welcome to the ultimate test of your villainous knowledge! Are you ready to take on the challenge and prove yourself as a true master of the dark side? This quiz app game will put your knowledge of the most notorious villains from the <span class="comicTextStyle">Marvel Universe</span> to the test. From the cunning <span class="comicTextStyle">Loki</span> to the sinister <span class="comicTextStyle">Thanos</span>, every question will challenge your knowledge of these infamous characters and their devious deeds. <br> So, whether you're a die-hard fan or just starting your journey into the world of villains, prepare to be entertained and educated in this epic battle of wits. 
                 <p>Let's see if you have what it takes to conquer the dark side and come out on top as the ultimate villain quiz champion!</p> 
-                <p><strong>Enter your username and click start to begin!</strong></p>
+                <p class="invitationText"><strong>Enter your username and click start to begin!</strong></p>
                 <form action="">
                     <label for="username" class="sr-only">Enter Username</label>
-                    <input type="text" name="username" id="username" placeholder="Enter player name">
+                    <input type="text" name="username" class="username" id="username" placeholder="Enter player name">
                     <button type="submit" class="landingPageButton">Start!</button>
                 </form>
             </div>
@@ -54,7 +56,7 @@
         <!-- score board page start -->
         <div class="scoreBoardPage hidden">
             <div class="wrapper">
-                <h2>Score Board</h2>
+                <h2>The <span class="teamName">Sinister</span> Score Board</h2>
                 <ul class="scoreList">
 
                 </ul>
@@ -65,7 +67,7 @@
     </main>
     <footer>
         <div class="wrapper">
-            <p> &copy; 2023 Developed by <a href="">Kyle Lau</a></p>
+            <p> &copy; 2023 Developed by <a target="_blank" href="https://github.com/KyleKHL" aria-label="Link to Github">Kyle Lau</a></p>
         </div>
     </footer>
     <!-- link to script file -->

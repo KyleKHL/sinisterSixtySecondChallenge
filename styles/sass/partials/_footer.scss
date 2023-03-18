@@ -2,7 +2,19 @@
 // Variables
 @use './variables' as *;
 
-footer .wrapper {
-    display: flex;
-    justify-content: center;
+footer {
+    margin-top: 50px;
+    background-color: $secondaryColor;
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        a{
+            color: $basicFontColor;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: $primaryColor;
+            transition: 200ms;
+        }
+    }
 }
