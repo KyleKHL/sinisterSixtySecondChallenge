@@ -15,21 +15,21 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <header>
-        <div class="wrapper">
-            <h1>The <span class="teamName">Sinister Six</span>ty Second Challenge</h1>
-        </div>
-    </header>
     <main>
         <!-- landing page start -->
-        <div class="landingPage hidden">
+        <div class="landingPage">
             <div class="wrapper">
-                <p>Welcome to the ultimate test of your villainous knowledge! Are you ready to take on the challenge and prove yourself as a true master of the dark side? This quiz app game will put your knowledge of the most notorious villains from the <span class="comicTextStyle">Marvel Universe</span> to the test. From the cunning <span class="comicTextStyle">Loki</span> to the sinister <span class="comicTextStyle">Thanos</span>, every question will challenge your knowledge of these infamous characters and their devious deeds. <br> So, whether you're a die-hard fan or just starting your journey into the world of villains, prepare to be entertained and educated in this epic battle of wits. 
-                <p>Let's see if you have what it takes to conquer the dark side and come out on top as the ultimate villain quiz champion!</p> 
-                <p class="invitationText"><strong>Enter your username and click start to begin!</strong></p>
+                <div class="titleContainer">
+                    <h1>The <span class="teamName">Sinister Six</span>ty Second Challenge</h1>
+                </div>
+                <div class="introTextContainer">
+                    <p>Welcome to the Sinister Sixty Second Challenge! <br> This app is designed to test your knowledge of the most diabolical and dangerous villains in the <span class="comicTextStyle">Marvel Universe</span>. From the cunning <span class="comicTextStyle">Loki</span> to the mad titan: <span class="comicTextStyle">Thanos</span>, every question will challenge your knowledge of these infamous characters and their devious deeds.</p>  
+                    <p>Let's see if you have what it takes to conquer the dark side and come out on top as the ultimate villain quiz champion!</p> 
+                    <p class="invitationText"><strong>Enter your username and click start to begin!</strong></p>
+                </div>
                 <form action="">
                     <label for="username" class="sr-only">Enter Username</label>
-                    <input type="text" name="username" class="username" id="username" placeholder="Enter player name">
+                    <input type="text" name="username" class="username" id="username" placeholder="Enter player name" required>
                     <button type="submit" class="landingPageButton">Start!</button>
                 </form>
             </div>

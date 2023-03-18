@@ -13,9 +13,11 @@ html {
 
 body {
     background-color: $backgroundColor;
+    min-height: 100vh;
 }
 
 .wrapper {
+    max-width: 1200px;
     width: 90%;
     margin: 0 auto;
 }
@@ -31,10 +33,6 @@ a {
 }
 
 // hidden class to hide pages
-// .hidden {
-//     display: none;
-// }
-
-.scoreBoard {
-    
+.hidden {
+    display: none;
 }

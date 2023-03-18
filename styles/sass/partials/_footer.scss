@@ -12,7 +12,8 @@ footer {
             color: $basicFontColor;
             text-decoration: underline;
         }
-        a:hover {
+        a:hover,
+        a:focus {
             color: $primaryColor;
             transition: 200ms;
         }
