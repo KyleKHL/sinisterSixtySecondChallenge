@@ -32,7 +32,7 @@ const playingPageDiv = document.querySelector('.playingPage');
 const playingPageQuestion = document.querySelector('.question');
 // points container
 const pointDisplay = document.querySelector('.pointsContainer')
-pointDisplay.innerHTML = `Score: ${userPoints}`;
+pointDisplay.innerHTML = userPoints;
 // countdown time container 
 const timeContainer = document.querySelector('.timeContainer');
 // warning texts
@@ -232,11 +232,11 @@ mCButtons.forEach(button => {
         
         if (selectedAnswer === chosenQuestion.answer) {
             userPoints = userPoints + 1;
-            pointDisplay.innerHTML = `Score: ${userPoints}`;
+            pointDisplay.innerHTML = userPoints;
             event.target.classList.add('correct')
         } else {
             userPoints = userPoints - 1;
-            pointDisplay.innerHTML = `Score: ${userPoints}`;
+            pointDisplay.innerHTML = userPoints;
             event.target.classList.add('incorrect')
         }
 

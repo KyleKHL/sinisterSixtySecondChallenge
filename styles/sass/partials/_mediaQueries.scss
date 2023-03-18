@@ -15,6 +15,43 @@
     form {
         width: 100%;
     }
+
+    // playingPage 
+    .warnings {
+        font-size: 1rem;
+        text-align: center;
+    }
+    .timeContainer,
+    .scoreText,
+    .pointsContainer {
+        font-size: 1.3rem;
+    }
+
+    .question {
+        font-size: 1.2rem;
+    }
+
+    .mCButton {
+        padding: 20px 24px;
+        font-size: 1rem;
+        margin: 8px;
+    }
+
+    // end of playingPage
+
+    // scoreboardPage
+    .scoreBoardPage .wrapper h2 {
+        font-size: 2.2rem;
+    }
+
+    .scoreList li p {
+        font-size: 1rem;
+    }
+
+    .restartButton {
+        width: 100%;
+    }
+    // end of scoreboard Page
     // footer text
     footer .wrapper p {
         font-size: 1rem;

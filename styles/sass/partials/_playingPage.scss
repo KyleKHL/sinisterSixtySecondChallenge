@@ -2,14 +2,34 @@
 // Variables
 @use './variables' as *;
 
+.playingPage {
+    min-height: 100vh;
+}
+
+.dataContainer {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.userPointsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.scoreText,
 .pointsContainer {
     font-family: $tertiaryFont;
     font-size: 3rem;
+    display: inline-block;
+    margin: 0;
 }
 
 .timeContainer {
     font-family: $tertiaryFont;
     font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .question {
@@ -20,12 +40,19 @@
 .timerWarningContainer {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .warnings {
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: $tertiaryFont;
     font-size: 1.3rem;
     color: $primaryColor;
+    min-height: 125px;
 }
 
 .choicesContainer {
