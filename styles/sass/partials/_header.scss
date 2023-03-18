@@ -1,0 +1,14 @@
+// Header
+// Variables
+@use './variables' as *;
+
+
+h1 {
+    font-family: $secondaryFont;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.teamName {
+    color:brown;
+}

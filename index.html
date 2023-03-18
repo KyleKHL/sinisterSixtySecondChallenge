@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinister Sixty Second Challenge</title>
+    <!-- link to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- link to stylesheet -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <h1>The <span class="teamName">Sinister Six</span>ty Second Challenge</h1>
+        </div>
+    </header>
+    <main>
+        <!-- landing page start -->
+        <div class="landingPage hidden">
+            <div class="wrapper">
+                <p>Welcome to the ultimate test of your villainous knowledge! Are you ready to take on the challenge and prove yourself as a true master of the dark side? This quiz app game will put your knowledge of the most notorious villains from the <span class="comicTextStyle">Marvel Universe</span> to the test. From the cunning <span class="comicTextStyle">Loki</span> to the sinister <span class="comicTextStyle">Thanos</span>, every question will challenge your knowledge of these infamous characters and their devious deeds. <br> So, whether you're a die-hard fan or just starting your journey into the world of villains, prepare to be entertained and educated in this epic battle of wits. 
+                <p>Let's see if you have what it takes to conquer the dark side and come out on top as the ultimate villain quiz champion!</p> 
+                <p><strong>Enter your username and click start to begin!</strong></p>
+                <form action="">
+                    <label for="username" class="sr-only">Enter Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter player name">
+                    <button type="submit" class="landingPageButton">Start!</button>
+                </form>
+            </div>
+        </div>
+        <!-- landing page end -->
+        <!-- playing page start -->
+        <div class="playingPage hidden">
+            <div class="wrapper">
+                    <div class="pointsContainer"></div>
+                <div class="timerWarningContainer">
+                    <div class="timeContainer"></div>
+                    <div class="warnings"></div>
+                </div>
+                <h2 class="question"></h2>
+                <div class="choicesContainer">
+                    <button class="multipleChoiceOptionOne mCButton" value="0"></button>
+                    <button class="multipleChoiceOptionTwo mCButton" value="1"></button>
+                    <button class="multipleChoiceOptionThree mCButton" value="2"></button>
+                    <button class="multipleChoiceOptionFour mCButton" value="3"></button>
+                </div>
+            </div>
+        </div>
+        <!-- playing page end -->
+        <!-- score board page start -->
+        <div class="scoreBoardPage hidden">
+            <div class="wrapper">
+                <h2>Score Board</h2>
+                <ul class="scoreList">
+
+                </ul>
+                <button class="restartButton">Restart Game</button>
+            </div>
+        </div>
+        <!-- score board page end -->
+    </main>
+    <footer>
+        <div class="wrapper">
+            <p> &copy; 2023 Developed by <a href="">Kyle Lau</a></p>
+        </div>
+    </footer>
+    <!-- link to script file -->
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
