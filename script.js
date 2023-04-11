@@ -216,7 +216,6 @@ const randomQuestionFunction = () => {
     })
     // use splice method in questionArrayData to stop questions from repeating
         questionArrayData.splice(getRandomQuestion, 1) 
-            console.log(questionArrayData)
 }
 
 // logic for multiple choice buttons
