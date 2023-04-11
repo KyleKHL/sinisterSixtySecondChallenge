@@ -1,5 +1,5 @@
 import firebaseInfo from "./firebase.js";
-import { getDatabase, ref, set, get, onValue, push } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"
+import { getDatabase, ref, get, onValue, push } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"
 // initialize db content
 const database = getDatabase(firebaseInfo);
 // create reference to db content
@@ -9,13 +9,17 @@ const database = getDatabase(firebaseInfo);
     const questionArrayPath = ref(database, `questionsArray`)
 
 
-// quiz app
-const quizApp = {};
-
 // user points
 let userPoints = 0;
 // current question
 let chosenQuestion = {};
+// copied question array from db
+let questionArrayData = [];
+
+const resetGame = () => {
+    questionArrayData = [];
+    chosenQuestion = {};
+}
 
 // landingPage
 const landingPageDiv = document.querySelector('.landingPage');
@@ -54,12 +58,6 @@ const hideAppearFunc = (hiddenPage, appearPage) => {
     appearPage.classList.remove('hidden');
 }
 
-// function for the end of the quiz
-const endOfTest = () => {
-    
-    hideAppearFunc(playingPageDiv , scoreBoardPageDiv);
-    // push the updated score here?
-}
 
 // function for timer
 let startingTime = 60;
@@ -68,6 +66,10 @@ timeContainer.innerHTML = `Time: ${startingTime}'s`;
 // landing page form event listener start
 const formSubmitHandler = (event) => {
     event.preventDefault();
+    // reset array
+    resetGame();
+    // reset questions
+    getQuestions();
     // push what user's username into db
     const usernameInput = landingPageUsernameInput.value.trim();
     
@@ -80,15 +82,11 @@ const formSubmitHandler = (event) => {
         // return value of userInput to empty string:
         landingPageUsernameInput.value = '';
 
-        // set user points to zero
-        let userPoints = 0;
-
         // set starting time to 60 seconds
-        let startingTime = 60;
+        startingTime = 60;
 
         // call hideAppearFunc to hide landing page and make visible playing page
         hideAppearFunc(landingPageDiv, playingPageDiv);
-        
 
         // call start timer function to start the timer!
         const countDown = setInterval(function () {
@@ -121,19 +119,21 @@ const formSubmitHandler = (event) => {
                     playerScore: parseInt(pointDisplay.innerHTML)
                 };
 
-                push(scoreBoardsArrayPath, playerInfo)
+                push(scoreBoardsArrayPath, playerInfo);
 
                 // Next is to sort the players based on their score
                 // then we append usernames with scores to scoreboard page
                 // then we need to transition to scoreboard page
-                hideAppearFunc(playingPageDiv, scoreBoardPageDiv)
-
+                hideAppearFunc(playingPageDiv, scoreBoardPageDiv);
             }
         }, 1000);
         // end of time setup
 
     }
 }
+
+landingPageForm.addEventListener('submit', formSubmitHandler)
+// landing page form event listener end
 
 // on value function to LISTEN for scores to update high score table
 onValue(scoreBoardsArrayPath , (data) => {
@@ -187,49 +187,46 @@ onValue(scoreBoardsArrayPath , (data) => {
     }
 })
 
-landingPageForm.addEventListener('submit', formSubmitHandler)
-// landing page form event listener end
-
-const randomQuestionFunction = () => {
-
-    // use get method to retrieve data from db
-    get(questionArrayPath).then((data) => {
-        const questionArrayData = data.val();
-
-        const newCopiedArray = [...questionArrayData];
-        
-
-        // select question in array randomly
-        const getRandomQuestion = Math.floor(Math.random() * newCopiedArray.length);
-        chosenQuestion = newCopiedArray[getRandomQuestion];
-        // append the question to h2
-        playingPageQuestion.textContent = chosenQuestion.question;
-        // making the text content equal to each of the answers
-        mCButtons.forEach(button => {
-            button.classList.remove('correct', 'incorrect');
-            button.disabled = false;
-
-            const number = button.value;
-            button.textContent = chosenQuestion.choices[number];
-        })
-        
-    // use splice method in questionArrayData to stop questions from repeating
-        
-        // let removedQuestion = newCopiedArray.splice(getRandomQuestion, 1)
+// ********************************************
+// reset all the questions to the app
+const getQuestions = () => {
+    // GET module to take snapshot of our firebase database
+    return get(questionArrayPath).then((data) => {
+        questionArrayData = data.val();
+        randomQuestionFunction()
     })
 }
 
-randomQuestionFunction();
 
+// get a random question function
+const randomQuestionFunction = () => {
 
-// add event listener to each on of the multiple choice buttons to evaluate the answer
+    // select question in array randomly
+    const getRandomQuestion = Math.floor(Math.random() * questionArrayData.length);
+    chosenQuestion = questionArrayData[getRandomQuestion];
+    // append the question to h2
+    playingPageQuestion.textContent = chosenQuestion.question;
+    // making the text content equal to each of the answers
+    mCButtons.forEach(button => {
+        button.classList.remove('correct', 'incorrect');
+        button.disabled = false;
+
+        const number = button.value;
+        button.textContent = chosenQuestion.choices[number];
+    })
+    // use splice method in questionArrayData to stop questions from repeating
+        questionArrayData.splice(getRandomQuestion, 1) 
+            console.log(questionArrayData)
+}
+
+// logic for multiple choice buttons
 mCButtons.forEach(button => {
 
     button.addEventListener('click', function (event) {
-        
-        const playerChoice =  event.target;
+
+        const playerChoice = event.target;
         const selectedAnswer = parseInt(playerChoice.value);
-        
+
         if (selectedAnswer === chosenQuestion.answer) {
             userPoints = userPoints + 1;
             pointDisplay.innerHTML = userPoints;
@@ -248,35 +245,35 @@ mCButtons.forEach(button => {
     })
 });
 
+// ********************************************
+
+// add event listener to each on of the multiple choice buttons to evaluate the answer
+
+
 
 // restart the game 
 restartButton.addEventListener('click', function(event){
     hideAppearFunc(scoreBoardPageDiv, landingPageDiv)
-    // reset timer
-    let startingTime = 60;
+    // reset display timer
     timeContainer.innerHTML = 60;
-    // reset score
-    let userPoints = 0;
+    // reset userPoints 
+    userPoints = 0;
+    // reset display score
     pointDisplay.innerHTML = 0;
+
 })
 
 
 
-// set data
-// function addToFirebaseDb(key, value) {
 
-//     const customRef = ref(database, key)
 
-//     return set(customRef, value)
-// }
+// func 1 : function to grab NEW FB questions -> RETURNS arr
 
-// addToFirebaseDb('scoreBoardsArray', scoreBoardArray);
-// addToFirebaseDb('questionsArray', questionArray);
+// contain in variable? const/let currentQs = func 1 (containing returned arr)
 
-// empty scoreboard array
-// const scoreBoardArray = [
-//     {
-//         // playerName: usernameInput,
-//         playerScore: userPoints
-//     }
-// ];
+// we run logic for answering quiz, getRandomQuestion BASED on currentQ
+
+// finish loop
+
+// when clicking on start game, we RUN function 1 = manually storing array 
+
